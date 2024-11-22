@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOCX to PDF Converter</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ADD8E6; /* Light blue background */
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4682B4; /* Steel blue for heading */
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+
+        .form-card {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e1e4e8;
+        }
+
+        .form-card label {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .form-card input[type="file"],
+        .form-card input[type="text"],
+        .form-card button {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .form-card button {
+            background-color: #4682B4; /* Steel blue color for button */
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .form-card button:hover {
+            background-color: #5A9BCF; /* Lighter blue shade on hover */
+        }
+
+        .message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 30px;
+            border: 1px solid #c3e6cb;
+            font-size: 16px;
+        }
+
+        .message a {
+            color: #155724;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .message a:hover {
+            text-decoration: underline;
+        }
+
+        .metadata {
+            background-color: #f8f9fa;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+            border: 1px solid #e1e4e8;
+        }
+
+        .metadata p {
+            margin: 5px 0;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        .footer a {
+            text-decoration: none;
+            color: #4682B4; /* Steel blue for footer link */
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .image-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .image-container img {
+            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .linkedin-logo {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            margin-left: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>DOCX to PDF Converter</h1>
+
+        <div class="form-card">
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <label for="file">Upload DOCX File:</label>
+                <input type="file" name="file" id="file" required>
+
+                <label for="password">Set PDF Password (Optional):</label>
+                <input type="text" name="password" id="password" placeholder="Enter a password (optional)">
+
+                <button type="submit">Convert</button>
+            </form>
+        </div>
+
+        {% if download_url %}
+            <div class="message">
+                <p>Your file has been converted successfully!</p>
+                <p><a href="{{ download_url }}" target="_blank">Download PDF</a></p>
+            </div>
+
+            <!-- Display File Metadata -->
+            <div class="metadata">
+                <h3>File Metadata:</h3>
+                <p><strong>File Name:</strong> {{ file_metadata.filename }}</p>
+                <p><strong>File Size:</strong> {{ file_metadata.size }} bytes</p>
+                <p><strong>Upload Time:</strong> {{ file_metadata.upload_time }}</p>
+            </div>
+        {% endif %}
+
+        <div class="image-container">
+            <img src="{{ url_for('static', filename='images/temp.png') }}" alt="Image representing DOCX to PDF">
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 All Rights Reserved. Created by Samvid</p>
+            <p>Follow me on <a href="https://www.linkedin.com/in/samvid-verma-498a99233/" target="_blank">LinkedIn 
+                <img class="linkedin-logo" src="{{ url_for('static', filename='images/temp1.png') }}" alt="LinkedIn Logo">
+            </a></p>
+        </div>
+    </div>
+
+</body>
+</html>
