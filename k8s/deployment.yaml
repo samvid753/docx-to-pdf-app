@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docx-to-pdf-app-deployment
+  labels:
+    app: docx-to-pdf-app
+spec:
+  replicas: 2  # Number of replicas
+  selector:
+    matchLabels:
+      app: docx-to-pdf-app
+  template:
+    metadata:
+      labels:
+        app: docx-to-pdf-app
+    spec:
+      containers:
+      - name: docx-to-pdf-app
+        image: samvidverma/docx-to-pdf-app:latest  # Replace with your Docker image
+        ports:
+        - containerPort: 5000  # Port exposed by the container
