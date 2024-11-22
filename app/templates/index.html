@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #ADD8E6; /* Light blue background */
+            background-color: #ADD8E6; 
             color: #333;
             margin: 0;
             padding: 0;
@@ -22,7 +22,7 @@
 
         h1 {
             text-align: center;
-            color: #4682B4; /* Steel blue for heading */
+            color: #4682B4; 
             font-size: 36px;
             margin-bottom: 30px;
         }
@@ -54,7 +54,7 @@
         }
 
         .form-card button {
-            background-color: #4682B4; /* Steel blue color for button */
+            background-color: #4682B4; 
             color: white;
             border: none;
             cursor: pointer;
@@ -62,7 +62,7 @@
         }
 
         .form-card button:hover {
-            background-color: #5A9BCF; /* Lighter blue shade on hover */
+            background-color: #5A9BCF; 
         }
 
         .message {
@@ -83,6 +83,16 @@
 
         .message a:hover {
             text-decoration: underline;
+        }
+
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 30px;
+            border: 1px solid #f5c6cb;
+            font-size: 16px;
         }
 
         .metadata {
@@ -106,7 +116,7 @@
 
         .footer a {
             text-decoration: none;
-            color: #4682B4; /* Steel blue for footer link */
+            color: #4682B4;
         }
 
         .footer a:hover {
@@ -137,6 +147,13 @@
     <div class="container">
         <h1>DOCX to PDF Converter</h1>
 
+        
+        {% if error %}
+            <div class="error">
+                <p>{{ error }}</p>
+            </div>
+        {% endif %}
+
         <div class="form-card">
             <form action="/upload" method="post" enctype="multipart/form-data">
                 <label for="file">Upload DOCX File:</label>
@@ -155,7 +172,6 @@
                 <p><a href="{{ download_url }}" target="_blank">Download PDF</a></p>
             </div>
 
-            <!-- Display File Metadata -->
             <div class="metadata">
                 <h3>File Metadata:</h3>
                 <p><strong>File Name:</strong> {{ file_metadata.filename }}</p>

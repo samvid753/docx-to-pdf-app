@@ -5,7 +5,7 @@ metadata:
   labels:
     app: docx-to-pdf-app
 spec:
-  replicas: 2  # Number of replicas
+  replicas: 2  
   selector:
     matchLabels:
       app: docx-to-pdf-app
@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: docx-to-pdf-app
-        image: samvidverma/docx-to-pdf-app:latest  # Replace with your Docker image
+        image: samvidverma/docx-to-pdf-app:latest  
         ports:
-        - containerPort: 5000  # Port exposed by the container
+        - containerPort: 5000  

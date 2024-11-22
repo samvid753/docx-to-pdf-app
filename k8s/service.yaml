@@ -3,10 +3,10 @@ kind: Service
 metadata:
   name: docx-to-pdf-app-service
 spec:
-  type: LoadBalancer  # Exposes the service externally
+  type: LoadBalancer  
   selector:
     app: docx-to-pdf-app
   ports:
   - protocol: TCP
-    port: 80         # Public-facing port
-    targetPort: 5000 # Port exposed by the container
+    port: 80         
+    targetPort: 5000 

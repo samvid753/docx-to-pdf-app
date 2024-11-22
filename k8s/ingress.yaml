@@ -6,7 +6,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: docpdf.com  # Replace with your domain or IP address
+  - host: docpdf.com 
     http:
       paths:
       - path: /
